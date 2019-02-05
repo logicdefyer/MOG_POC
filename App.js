@@ -89,6 +89,17 @@ class HomeScreen extends React.Component {
         <Image
           source={this.state.image}
         />
+        <Button
+            title="Log Out"
+            onPress={() => {
+              this.props.navigation.dispatch(StackActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({ routeName: 'Login' })
+                ],
+              }))
+            }}
+          />
       </View>
     );
   }  
