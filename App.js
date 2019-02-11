@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text,Image, StyleSheet, Button, TextInput } from 'react-native';
+// import { Icon } from 'native-base';
 import Icon from '@expo/vector-icons/Ionicons';
 import * as data from './userjson.json';
+import WelcomeScreen from './src/screens/login';
+import Feed from './src/screens/Feed';
+import Settings from './src/screens/Settings';
+import Profile from './src/screens/Profile';
 /**
  * - AppSwitchNavigator
  *    - WelcomeScreen
@@ -31,117 +36,11 @@ class App extends Component {
 export default App;
 
 
-class WelcomeScreen extends Component {
-  state = {
-    username: "",
-    password: "",
-    image: data.image
-  };
-
-  placeNameChangedHandler = user => {
-    this.setState({
-      username: user
-    });
-  };
-
-  passChangedHandler = pass => {
-    this.setState({
-      password: pass
-    });
-  };
-  placeSubmitHandler = () => {
-    if (this.state.username.trim() === "" || this.state.password.trim() === "") {
-      alert("Cant be Blank");
-      return;
-    }
-
-    this.setState(prevState => {
-      if(prevState.username===data.userName && prevState.password===data.passWord) {
-        alert("Hi "+prevState.username);
-        this.props.navigation.navigate('Dashboard')
-      } else {
-        alert("Login Failed");
-      }
-    });
-  };
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <View style={styles.container}>
-        <View style={styles.inner_container}>
-          <TextInput
-            placeholder="Username"
-            value={this.state.username}
-            onChangeText={this.placeNameChangedHandler}
-          />
-        </View>
-        <View style={styles.inner_container}>
-          <TextInput
-            secureTextEntry={true}
-            placeholder="Password"
-            value={this.state.password}
-            onChangeText={this.passChangedHandler}
-          />
-        </View>
-        <View  style={styles.inner_container}>
-          <Button
-            title="Login"
-            onPress={this.placeSubmitHandler}
-          />
-        </View>
-      </View>
-      </View>
-    );
-  }
-}
-
-
 class DashboardScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>DashboardScreen</Text>
-      </View>
-    );
-  }
-}
-
-class Feed extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Go To Detail Screen" onPress={() => this.props.navigation.navigate('Detail')} />
-      </View>
-    );
-  }
-}
-
-class Settings extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-            title="Log Out"
-            onPress={() => {
-              this.props.navigation.navigate('Welcome')}
-            }
-          />
-      </View>
-    );
-  }
-}
-
-class Profile extends Component {
-  state = {
-    image: require('./assets/image.jpg')
-  };
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Image
-          source={this.state.image}
-        />
-        <Text>Profile</Text>
       </View>
     );
   }
@@ -234,10 +133,27 @@ const DashboardStackNavigator = createStackNavigator(
     }
   }
 );
+const Screen1StackNavigator = createStackNavigator(
+  {
+    DashboardTabNavigator: DashboardTabNavigator
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+        )
+      };
+    }
+  }
+);
 
 const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: DashboardStackNavigator
+  },
+  Screen1: {
+    screen: Screen1StackNavigator
   }
 });
 
