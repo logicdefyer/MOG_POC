@@ -1,126 +1,125 @@
 import React, { Component } from 'react';
-import { View, Text,Image, StyleSheet, Button, TextInput } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Picker, Icon } from 'native-base';
-
-import * as data from '../../userjson.json';
+import { View, Text,Image, StyleSheet, TextInput ,AppRegistry, FlatList, Alert, ActivityIndicator, Platform} from 'react-native';
+import { Container, Header, Content, Form, Item, Input, Picker, Icon, Button } from 'native-base';
 
 export default class WelcomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected2: undefined,
-      selected: "key1"
+      isLoading: true,
+      selected: "IN",
+      dataSource: [],
+      mobile: ""
     };
-  }
-  onValueChange2(value) {
+  };
+
+  mobileChangedHandler = mob => {
     this.setState({
-      selected2: value,
+      mobile: mob
     });
-  }
+  };
+
   onValueChange(value) {
     this.setState({
       selected: value
     });
-  }
-    state = {
-      username: "",
-      password: "",
-      image: data.image
-    };
-  
-    placeNameChangedHandler = user => {
-      this.setState({
-        username: user
-      });
-    };
-  
-    passChangedHandler = pass => {
-      this.setState({
-        password: pass
-      });
-    };
-    placeSubmitHandler = () => {
-      if (this.state.username.trim() === "" || this.state.password.trim() === "") {
-        alert("Cant be Blank");
-        return;
-      }
-  
-      this.setState(prevState => {
-        if(prevState.username===data.userName && prevState.password===data.passWord) {
-          alert("Hi "+prevState.username);
-          this.props.navigation.navigate('Dashboard')
-        } else {
-          alert("Login Failed");
-        }
-      });
-    };
-    render() {
+  };
+
+  componentDidMount() {
+    var customData = require('../../countrycode.json');
+    this.setState({
+      isLoading: false,
+      dataSource: customData
+    });
+  };
+
+  placeSubmitHandler = () => {
+    if (this.state.mobile.trim() === "") {
+      alert("Mobile can't be blank");
+      return;
+    }
+
+    this.props.navigation.navigate('Dashboard');
+  };
+
+  render() {
+    let serviceItems = this.state.dataSource.map((item, i) => {
+      return <Picker.Item key={i} label={item.dial_code + " " + item.code} value={item.code} />
+    });
+
+    if (this.state.isLoading) {
       return (
-        // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        //   <View style={styles.container}>
-        //   <View style={styles.inner_container}>
-        //     <TextInput
-        //       placeholder="Username"
-        //       value={this.state.username}
-        //       onChangeText={this.placeNameChangedHandler}
-        //     />
-        //   </View>
-        //   <View style={styles.inner_container}>
-        //     <TextInput
-        //       secureTextEntry={true}
-        //       placeholder="Password"
-        //       value={this.state.password}
-        //       onChangeText={this.passChangedHandler}
-        //     />
-        //   </View>
-        //   <View  style={styles.inner_container}>
-        //     <Button
-        //       title="Login"
-        //       onPress={this.placeSubmitHandler}
-        //     />
-        //   </View>
-        // </View>
-        // </View>
-      <Container>
+        <View style={{flex: 1, paddingTop: 20}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+  
+      return (
+        <Container style={styles.MainContainer}>
         <Header />
         <Content>
-          <Form>
-            <Item picker>
+          <Form style={styles.form}>
+            <Item style={styles.pickeritem}>
             <Picker
               mode="dropdown"
               iosHeader="Select your SIM"
               iosIcon={<Icon name="arrow-down" />}
-              style={{ width: undefined }}
+              style={{ width: '100%' }}
               selectedValue={this.state.selected}
               onValueChange={this.onValueChange.bind(this)}
             >
-              <Picker.Item label="Wallet" value="key0" />
-              <Picker.Item label="ATM Card" value="key1" />
-              <Picker.Item label="Debit Card" value="key2" />
-              <Picker.Item label="Credit Card" value="key3" />
-              <Picker.Item label="Net Banking" value="key4" />
+            {serviceItems}
             </Picker>
             </Item>
-            <Item >
-              <Input placeholder="Password" />
+            <Item style={styles.pickeritem}>
+              <Text style={styles.txtbordr}>MOBILE</Text>
+              <Input type="mobile" placeholder="Mobile" value={this.state.mobile} onChangeText={this.mobileChangedHandler} />
             </Item>
+              <Button block onPress={this.placeSubmitHandler}>
+                <Text>Primary</Text>
+              </Button>
           </Form>
         </Content>
-      </Container>
+        </Container> 
       );
     }
   }
 
 const styles = StyleSheet.create({
-container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-},
-inner_container: {
-    margin: 10,
-    width: 300,
-    borderColor:"black",
-    borderWidth: 1
-},
-});
+  MainContainer :{
+    justifyContent: 'center',
+    flex:1,
+    paddingTop: (Platform.OS === 'ios') ? 20 : 0,
+  },
+  pickeritem :{
+    borderLeftWidth :2,
+    borderRightWidth:2,
+    borderTopWidth:2,
+    borderBottomWidth:2,
+    borderColor:'#333333',
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    alignItems : 'center',
+    marginLeft:5,
+    marginBottom:5,
+    marginTop: 5,
+    marginRight: 5
+  },
+  form: {
+    marginTop: 100,
+  },
+  txtbordr:{
+    borderRightWidth:2,
+    width: '20%',
+    height: '100%',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  FlatListItemStyle: {
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+    },
+    
+    });
