@@ -35,9 +35,6 @@ class App extends Component {
 }
 export default App;
 
-
-
-
 class DashboardScreen extends Component {
   render() {
     return (
