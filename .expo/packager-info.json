@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 11224,
-  "expoServerNgrokUrl": "https://62-b7n.upayan.mog-poc.exp.direct",
-  "packagerNgrokUrl": "https://packager.62-b7n.upayan.mog-poc.exp.direct",
-  "ngrokPid": 3000
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
