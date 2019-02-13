@@ -1,48 +1,60 @@
 import React, { Component } from 'react';
 import { View, Text,Image, StyleSheet, Button, TextInput,Platform,TouchableOpacity } from 'react-native';
+import { Container, Header, Content, Form, Item, Input, Picker, Icon } from 'native-base';
 import {Colors, Fonts} from '../constants';
+import ImageSlider from 'react-native-image-slider';
 
-
-const chartIcon = require('../../assets/pages/chart.png');
-const calendarIcon = require('../../assets/pages/calendar.png');
-const chatIcon = require('../../assets/pages/chat.png');
-const galleryIcon = require('../../assets/pages/gallery.png');
+const AccessoriesIcon = require('../../assets/pages/Accessories.png');
+const ApparelIcon = require('../../assets/pages/Apparel.png');
+const ElectronicsIcon = require('../../assets/pages/Electronics.png');
+const foodIcon = require('../../assets/pages/food.png');
 const profileIcon = require('../../assets/pages/profile.png');
+const petIcon = require('../../assets/pages/pet.png');
+
+
 
 export default class Feed extends Component {
     render() {
         return (
           <View style={styles.container}>
+          <ImageSlider
+            autoPlayWithInterval={3000}
+            images={[
+              'https://placeimg.com/640/640/nature',
+              'https://placeimg.com/640/640/people',
+              'https://placeimg.com/640/640/animals',
+              'https://placeimg.com/640/640/beer'
+              ]}/>
             <View style={styles.row}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Detail')}
                 style={styles.item}>
                 <Image
                   resizeMode="contain"
-                  source={chartIcon}
+                  source={AccessoriesIcon}
                   style={styles.itemImage}
                 />
-                <Text style={styles.itemText}>Charts</Text>
+                <Text style={styles.itemText}>Accessories</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Detail')}
                 style={styles.item}>
                 <Image
                   resizeMode="contain"
-                  source={galleryIcon}
+                  source={foodIcon}
                   style={styles.itemImage}
                 />
-                <Text style={styles.itemText}>Gallery</Text>
+                <Text style={styles.itemText}>food</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Detail')}
                 style={styles.item}>
                 <Image
                   resizeMode="contain"
-                  source={profileIcon}
+                  source={petIcon}
                   style={styles.itemImage}
                 />
-                <Text style={styles.itemText}>Profile</Text>
+                <Text style={styles.itemText}>Pet</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.row}>
@@ -51,20 +63,20 @@ export default class Feed extends Component {
                 style={styles.item}>
                 <Image
                   resizeMode="contain"
-                  source={chatIcon}
+                  source={ElectronicsIcon}
                   style={styles.itemImage}
                 />
-                <Text style={styles.itemText}>Chats</Text>
+                <Text style={styles.itemText}>Electronics</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Detail')}
                 style={styles.item}>
                 <Image
                   resizeMode="contain"
-                  source={calendarIcon}
+                  source={ApparelIcon}
                   style={styles.itemImage}
                 />
-                <Text style={styles.itemText}>Calendar</Text>
+                <Text style={styles.itemText}>Apparel</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Detail')}

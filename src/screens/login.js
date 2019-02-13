@@ -77,7 +77,7 @@ export default class WelcomeScreen extends Component {
               <Input type="mobile" placeholder="Mobile" value={this.state.mobile} onChangeText={this.mobileChangedHandler} />
             </Item>
               <Button block onPress={this.placeSubmitHandler}>
-                <Text>Primary</Text>
+                <Text>Login</Text>
               </Button>
           </Form>
         </Content>

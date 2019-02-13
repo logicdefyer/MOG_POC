@@ -58,7 +58,7 @@ const FeedStack = createStackNavigator(
       screen: Feed,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: 'Feed',
+          headerTitle: 'Home Screen',
           headerLeft: (
             <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
           )

@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://62-b7n.upayan.mog-poc.exp.direct",
+  "packagerNgrokUrl": "https://packager.62-b7n.upayan.mog-poc.exp.direct",
+  "ngrokPid": 19947
 }
