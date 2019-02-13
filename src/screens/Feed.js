@@ -3,6 +3,8 @@ import { View, Text,Image, StyleSheet, Button, TextInput,Platform,TouchableOpaci
 import { Container, Header, Content, Form, Item, Input, Picker, Icon } from 'native-base';
 import {Colors, Fonts} from '../constants';
 import ImageSlider from 'react-native-image-slider';
+import { SearchBar } from 'react-native-elements';
+
 
 const AccessoriesIcon = require('../../assets/pages/Accessories.png');
 const ApparelIcon = require('../../assets/pages/Apparel.png');
@@ -11,11 +13,17 @@ const foodIcon = require('../../assets/pages/food.png');
 const profileIcon = require('../../assets/pages/profile.png');
 const petIcon = require('../../assets/pages/pet.png');
 
+
 export default class Feed extends Component {
+  _handleResults(results) {
+    this.setState({ results });
+  }
     render() {
         return (
           <View style={styles.container}>
+          
           <ImageSlider
+          style={{ height: "20%"}}
             autoPlayWithInterval={3000}
             images={[
               'https://placeimg.com/640/640/nature',
@@ -23,6 +31,10 @@ export default class Feed extends Component {
               'https://placeimg.com/640/640/animals',
               'https://placeimg.com/640/640/beer'
               ]}/>
+              <SearchBar
+                placeholder="Search"
+                platform="ios"
+              />
             <View style={styles.row}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Detail')}
@@ -95,7 +107,7 @@ export default class Feed extends Component {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.yellow,
       paddingTop: 10,
     },
     row: {
