@@ -11,8 +11,6 @@ const foodIcon = require('../../assets/pages/food.png');
 const profileIcon = require('../../assets/pages/profile.png');
 const petIcon = require('../../assets/pages/pet.png');
 
-
-
 export default class Feed extends Component {
     render() {
         return (

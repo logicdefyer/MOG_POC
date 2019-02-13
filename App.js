@@ -7,6 +7,7 @@ import WelcomeScreen from './src/screens/login';
 import Feed from './src/screens/Feed';
 import Settings from './src/screens/Settings';
 import Profile from './src/screens/Profile';
+import Detail from './src/screens/Detail';
 /**
  * - AppSwitchNavigator
  *    - WelcomeScreen
@@ -36,21 +37,15 @@ class App extends Component {
 export default App;
 
 
-class DashboardScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>DashboardScreen</Text>
-      </View>
-    );
-  }
-}
-
-const Detail = props => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Detail</Text>
-  </View>
-);
+// class DashboardScreen extends Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>DashboardScreen</Text>
+//       </View>
+//     );
+//   }
+// }
 
 const FeedStack = createStackNavigator(
   {
