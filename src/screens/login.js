@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text,Image, StyleSheet, TextInput ,AppRegistry, FlatList, Alert, ActivityIndicator, Platform} from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Picker, Icon, Button } from 'native-base';
+import { View, Text,Image, StyleSheet, TextInput ,AppRegistry, FlatList, Alert, ActivityIndicator, Platform, Picker} from 'react-native';
+import { Container, Header, Content, Form, Item, Input,  Icon, Button } from 'native-base';
 
 export default class WelcomeScreen extends Component {
   constructor(props) {
