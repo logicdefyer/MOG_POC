@@ -38,7 +38,7 @@ export default class Feed extends Component {
   }
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         {/* <View style={styles.container}> */}
         <Slideshow
           dataSource={[

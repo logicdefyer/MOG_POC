@@ -13,26 +13,30 @@ import Profile from '../screens/Profile';
 import Detail from '../screens/Detail';
 import screen1 from '../screens/screen1';
 import screen2 from '../screens/screen2';
+import WelcomeScreen from '../screens/login';
 
 const FeedStack = createStackNavigator(
     {
       Feed: {
         screen: Feed,
-        navigationOptions: ({ navigation }) => {
-          return {
-            headerStyle: {
-              backgroundColor: '#334333',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerTitle: 'Home Screen',
-            headerLeft: (
-              <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
-            )
-          };
-        }
+        navigationOptions: {
+            header: null
+    }
+        // navigationOptions: ({ navigation }) => {
+        //   return {
+        //     headerStyle: {
+        //       backgroundColor: 'transparent',
+        //     },
+        //     headerTintColor: '#fff',
+        //     headerTitleStyle: {
+        //       fontWeight: 'bold',
+        //     },
+        //     headerTitle: 'Home Screen',
+        //     headerLeft: (
+        //       <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+        //     )
+        //   };
+        // }
       },
       Detail: {
         screen: Detail
@@ -172,5 +176,5 @@ const FeedStack = createStackNavigator(
 module.exports = {
     DashboardStackNavigator: DashboardStackNavigator,
     screen1StackNavigator: screen1StackNavigator,
-    screen2StackNavigator: screen2StackNavigator 
+    screen2StackNavigator: screen2StackNavigator,
 };
