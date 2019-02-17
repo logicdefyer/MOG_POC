@@ -7,6 +7,7 @@ import {
 } from 'react-navigation';
 
 import Icon from '@expo/vector-icons/Ionicons';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 import Feed from '../screens/Feed';
 import Settings from '../screens/Settings';
 import Profile from '../screens/Profile';
@@ -19,24 +20,24 @@ const FeedStack = createStackNavigator(
     {
       Feed: {
         screen: Feed,
-        navigationOptions: {
-            header: null
-    }
-        // navigationOptions: ({ navigation }) => {
-        //   return {
-        //     headerStyle: {
-        //       backgroundColor: 'transparent',
-        //     },
-        //     headerTintColor: '#fff',
-        //     headerTitleStyle: {
-        //       fontWeight: 'bold',
-        //     },
-        //     headerTitle: 'Home Screen',
-        //     headerLeft: (
-        //       <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
-        //     )
-        //   };
-        // }
+    //     navigationOptions: {
+    //         header: null
+    // }
+        navigationOptions: ({ navigation }) => {
+          return {
+            headerStyle: {
+              backgroundColor: '#333333',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerTitle: 'Home Screen',
+            headerLeft: (
+              <IonIcon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+            )
+          };
+        }
       },
       Detail: {
         screen: Detail
@@ -63,7 +64,7 @@ const FeedStack = createStackNavigator(
           },
           headerTitle: 'Profile',
           headerLeft: (
-            <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+            <IonIcon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
           )
         };
       }
@@ -83,7 +84,7 @@ const FeedStack = createStackNavigator(
           },
           headerTitle: 'Settings',
           headerLeft: (
-            <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+            <IonIcon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
           )
         };
       }
@@ -121,7 +122,7 @@ const FeedStack = createStackNavigator(
             fontWeight: 'bold',
           },
           headerLeft: (
-            <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+            <IonIcon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
           )
         };
       }
@@ -144,7 +145,7 @@ const FeedStack = createStackNavigator(
           },
           headerTitle: 'screen1',
           headerLeft: (
-            <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+            <IonIcon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
           )
         };
       }
@@ -166,7 +167,7 @@ const FeedStack = createStackNavigator(
             fontWeight: 'bold',
           },
           headerLeft: (
-            <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+            <IonIcon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
           )
         };
       }

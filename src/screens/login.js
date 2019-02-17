@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text,Image, StyleSheet, TextInput ,AppRegistry, FlatList, Alert, ActivityIndicator, Platform, Picker} from 'react-native';
+import { View, Text,Image,ImageBackground, StyleSheet, TextInput ,AppRegistry, FlatList, Alert, ActivityIndicator, Platform, Picker,TouchableOpacity} from 'react-native';
 import { Container, Header, Content, Form, Item, Input,  Icon, Button } from 'native-base';
 
+
+const background = require("../../assets/pages/background.jpg");
+const lockIcon = require("../../assets/pages/lock.png");
+const personIcon = require("../../assets/pages/person.png");
 export default class WelcomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -54,72 +58,115 @@ export default class WelcomeScreen extends Component {
         </View>
       );
     }
-  
-      return (
-        <Container style={styles.MainContainer}>
-        <Header />
-        <Content>
-          <Form style={styles.form}>
-            <Item style={styles.pickeritem}>
+
+    return (
+      <ImageBackground 
+        style={[styles.background, styles.container]} 
+        source={background}
+        resizeMode="cover"
+      >
+        <View style={styles.container} />
+        <View style={styles.wrapper}>
+          <View style={styles.inputWrap}>
+            <View style={styles.iconWrap}>
+              <Image
+                source={personIcon}
+                style={styles.icon}
+                resizeMode="contain"
+              />
+            </View>
             <Picker
               mode="dropdown"
               iosHeader="Select your SIM"
               iosIcon={<Icon name="arrow-down" />}
-              style={{ width: '100%' }}
+              style={styles.input}
               selectedValue={this.state.selected}
               onValueChange={this.onValueChange.bind(this)}
+              underlineColorAndroid="transparent"
             >
             {serviceItems}
             </Picker>
-            </Item>
-            <Item style={styles.pickeritem}>
-              <Text style={styles.txtbordr}>MOBILE</Text>
-              <Input type="mobile" placeholder="Mobile" value={this.state.mobile} onChangeText={this.mobileChangedHandler} />
-            </Item>
-              <Button block onPress={this.placeSubmitHandler}>
-                <Text>Login</Text>
-              </Button>
-          </Form>
-        </Content>
-        </Container> 
-      );
+          </View>
+          <View style={styles.inputWrap}>
+            <View style={styles.iconWrap}>
+              <Image
+                source={lockIcon}
+                style={styles.icon}
+                resizeMode="contain"
+              />
+            </View>
+            <TextInput
+              placeholder="Mobile"
+              secureTextEntry
+              style={styles.input}
+              value={this.state.mobile} 
+              onChangeText={this.mobileChangedHandler}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+          <TouchableOpacity onPress={this.placeSubmitHandler} activeOpacity={.5}>
+            <View  style={styles.button}>
+              <Text style={styles.buttonText}>Sign In</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={.5}>
+            <View>
+              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container} />
+      </ImageBackground>
+    );
+
     }
   }
-
-const styles = StyleSheet.create({
-  MainContainer :{
-    justifyContent: 'center',
-    flex:1,
-    paddingTop: (Platform.OS === 'ios') ? 20 : 0,
-  },
-  pickeritem :{
-    borderLeftWidth :2,
-    borderRightWidth:2,
-    borderTopWidth:2,
-    borderBottomWidth:2,
-    borderColor:'#333333',
-    backgroundColor: 'transparent',
-    flexDirection: 'row',
-    alignItems : 'center',
-    marginLeft:5,
-    marginBottom:5,
-    marginTop: 5,
-    marginRight: 5
-  },
-  form: {
-    marginTop: 100,
-  },
-  txtbordr:{
-    borderRightWidth:2,
-    width: '20%',
-    height: '100%',
-    textAlign: 'center',
-    justifyContent: 'center'
-  },
-  FlatListItemStyle: {
-      padding: 10,
-      fontSize: 18,
-      height: 44,
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
     },
-    
-    });
+    background: {
+      width: null,
+      height: null
+    },
+    wrapper: {
+      paddingHorizontal: 15,
+    },
+    inputWrap: {
+      flexDirection: "row",
+      marginVertical: 10,
+      height: 40,
+      backgroundColor: "transparent"
+    },
+    input: {
+      flex: 1,
+      paddingHorizontal: 10,
+      backgroundColor: '#FFF'
+    },
+    iconWrap: {
+      paddingHorizontal: 7,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#d73352"
+    },
+    icon: {
+      width: 20,
+      height: 20,
+    },
+    button: {
+      backgroundColor: "#d73352",
+      paddingVertical: 15,
+      marginVertical: 15,
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    buttonText: {
+      color: "#FFF",
+      fontSize: 18
+    },
+    forgotPasswordText: {
+      color: "#FFF",
+      backgroundColor: "transparent",
+      textAlign: "center"
+    }
+  });

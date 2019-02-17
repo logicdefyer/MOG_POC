@@ -10,16 +10,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import {
-  Container,
-  Header,
-  Content,
-  Form,
-  Item,
-  Input,
-  Picker,
-  Icon
-} from "native-base";
+
 import { Colors, Fonts } from "../constants";
 import ImageSlider from "react-native-image-slider";
 import { SearchBar } from "react-native-elements";
@@ -40,13 +31,6 @@ export default class Feed extends Component {
     return (
       <ScrollView style={styles.container}>
         {/* <View style={styles.container}> */}
-        <Slideshow
-          dataSource={[
-            { url: "https://placeimg.com/640/640/nature" },
-            { url: "https://placeimg.com/640/640/people" },
-            { url: "https://placeimg.com/640/640/animals" }
-          ]}
-        />
         {/* <ImageSlider
           style={{ height: "20%"}}
             autoPlayWithInterval={3000}
@@ -56,7 +40,7 @@ export default class Feed extends Component {
               'https://placeimg.com/640/640/animals',
               'https://placeimg.com/640/640/beer'
               ]}/> */}
-        <SearchBar placeholder="Search" platform="ios" />
+        <SearchBar placeholder="Search" />
         <View style={styles.row}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Detail")}
@@ -127,6 +111,13 @@ export default class Feed extends Component {
             <Text style={styles.itemText}>Login</Text>
           </TouchableOpacity>
         </View>
+        <Slideshow
+          dataSource={[
+            { url: "https://placeimg.com/640/640/nature" },
+            { url: "https://placeimg.com/640/640/people" },
+            { url: "https://placeimg.com/640/640/animals" }
+          ]}
+        />
         {/* </View> */}
       </ScrollView>
     );
@@ -136,7 +127,7 @@ export default class Feed extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.yellow,
+    backgroundColor: '#ffffff',
     paddingTop: 10
   },
   row: {
