@@ -3,7 +3,7 @@ MOG_POC
 
 Clone this repo then run-
 
-npm i
-react-native eject
-react-native link
-react-native run-android or react-native run-ios
+1.npm i
+2.react-native eject
+3.react-native link
+4.react-native run-android or react-native run-ios
