@@ -1,0 +1,5 @@
+{
+      "userName": "admin",
+      "passWord": "admin",
+      "image": "require('./assets/image.jpg')"
+}
