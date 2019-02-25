@@ -1,47 +1,43 @@
 import React from 'react';
-import { Image, View, ScrollView, Text, Button, StyleSheet, Platform } from 'react-native';
+// import { Image, View, ScrollView, Text, Button, StyleSheet, Platform } from 'react-native';
+import { Text, Root, Container, Content, Header, Left, Button, Icon, Body, Title } from "native-base";
 import {
     createDrawerNavigator,
     DrawerItems, SafeAreaView
 } from 'react-navigation';
-
+import Screen3 from '../screens/screen3';
 import { DashboardStackNavigator, screen1StackNavigator, screen2StackNavigator } from './navigation3';
+import SideBar from '../screens/sidebar/index';
+
+
+// const SideBar = () => (
+//   <Container>
+//     <Content>
+//       <Text>Text</Text>
+//     </Content>
+//   </Container>
+// );
 
 const AppDrawerNavigator = createDrawerNavigator({
     Dashboard: DashboardStackNavigator,
     Screen1: screen1StackNavigator,
-    Screen2: screen2StackNavigator
+    Screen2: screen2StackNavigator,
+    Screen3: Screen3
 },
 {
-    contentComponent: (props) => (
-     <SafeAreaView style={styles.container}>
-        <View style={{height: 150,alignItems: 'center', justifyContent: 'center'}}>
-        <Image
-          source={require('../../assets/image.jpg')}
-          style={{ width: '100%', height: '100%' }}
-        />
-        </View>
-       <ScrollView style={styles.drawerItems}>
-         <DrawerItems {...props} />
-         <Button
-            style={styles.logoutButton}
-            title="Logout"
-            onPress={() => props.navigation.navigate('Welcome') }/>
-       </ScrollView>
-     </SafeAreaView>
-    ),
+    contentComponent: props => <SideBar {...props} />,
     initialRouteName: 'Dashboard',
     // drawerWidth: 200
  });
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#334333'
-    },
-    drawerItems: {
-        backgroundColor: '#ffffff',
-    }
-  });
+// const styles = StyleSheet.create({
+//     container: {
+//       flex: 1,
+//       backgroundColor: '#334333'
+//     },
+//     drawerItems: {
+//         backgroundColor: '#ffffff',
+//     }
+//   });
 
 module.exports = AppDrawerNavigator;
