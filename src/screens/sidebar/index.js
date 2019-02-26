@@ -1,7 +1,7 @@
 import React from "react";
 import { AppRegistry, Image, StatusBar,ImageBackground } from "react-native";
 import { Container, Content, Text, List, ListItem } from "native-base";
-const routes = ["Dashboard", "Screen1", "Screen2","Screen3"];
+const routes = ["Dashboard", "Screen1", "Screen2","My Account"];
 export default class SideBar extends React.Component {
   render() {
     return (

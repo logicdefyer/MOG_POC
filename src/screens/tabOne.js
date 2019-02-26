@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { Content, Card, CardItem, Text, Body,Icon, Picker, Form  } from "native-base";
+import { Content, Card, CardItem, Text, Body,Icon, Picker, Form,Right,Left,Button  } from "native-base";
+import { Image } from "react-native";
 
+
+const cardImage = require("../../assets/drawer-cover.png");
 export default class TabOne extends Component {
   constructor(props) {
     super(props);
@@ -17,38 +20,36 @@ export default class TabOne extends Component {
     return (
       <Content padder>
         <Card>
-          <CardItem>
-            <Body>
-              <Text>NativeBase is open source and free.</Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Platform specific codebase for components</Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Any native third-party libraries can be included along with
-                NativeBase.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Single file to theme your app and NativeBase components.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Gives an ease to include different font types in your app.
-              </Text>
-            </Body>
-          </CardItem>
+        <CardItem cardBody>
+              <Image
+                style={{
+                  resizeMode: "cover",
+                  width: null,
+                  height: 200,
+                  flex: 1
+                }}
+                source={cardImage}
+              />
+            </CardItem>
+
+            <CardItem style={{ paddingVertical: 0 }}>
+              <Left>
+                <Button success style={{textAlign:"center"}}>
+                  <Text>Activated</Text>
+                </Button>
+              </Left>
+              <Body>
+                <Button transparent>
+                  <Text>View Offer</Text>
+                </Button>
+              </Body>
+              <Right>
+              <Button danger transparent>
+                <Icon active type="MaterialIcons" name="access-alarm" />
+                <Text>11h left</Text>
+              </Button>
+              </Right>
+            </CardItem>
         </Card>
         <Form>
           <Picker
@@ -70,3 +71,4 @@ export default class TabOne extends Component {
     );
   }
 }
+

@@ -12,7 +12,10 @@ import {
   Left,
   Body,
   TabHeading,
+  Fab,
   Text,
+  IconNB,
+  View
 } from "native-base";
 import { StyleSheet } from 'react-native';
 import TabOne from "./tabOne";
@@ -24,6 +27,9 @@ class Screen3 extends Component {
     constructor(props) {
         super(props)
         this.state = { currentTab: 0 }
+        this.state = {
+            active: false
+          };
       }
     render() {
         return (
@@ -35,25 +41,37 @@ class Screen3 extends Component {
                     </Button>
                 </Left>
                 <Body>
-                    <Title> Basic Tabs</Title>
+                    <Title> My Account</Title>
                 </Body>
                 <Right />
                 </Header>
 
                 <Tabs initialPage={this.state.currentPage} onChangeTab={({ i }) => this.setState({ currentTab: i })}>
                 <Tab
-                    tabStyle={{ backgroundColor: 'red' }}
-                    activeTabStyle={{ backgroundColor: 'blue' }}
-                    heading={<TabHeading style={this.state.currentTab === 0 ? styles.activeTabStyle : styles.tabStyle}><Icon name="list" /><Text>List</Text></TabHeading>}>
+                    heading={<TabHeading style={this.state.currentTab === 0 ? styles.activeTabStyle : styles.tabStyle}><Icon type="MaterialIcons" name="local-play" /><Text>Offers</Text></TabHeading>}>
                     <TabOne/>
                 </Tab>
                 <Tab
-                    tabStyle={{ backgroundColor: 'red' }}
-                    activeTabStyle={{ backgroundColor: 'blue' }}
-                    heading={<TabHeading style={this.state.currentTab === 1 ? styles.activeTabStyle : styles.tabStyle}><Icon name="grid" /><Text>Grid</Text></TabHeading>}>
+                    heading={<TabHeading style={this.state.currentTab === 1 ? styles.activeTabStyle : styles.tabStyle}><Icon type="MaterialIcons" name="shopping-basket" /><Text>Favourites</Text></TabHeading>}>
                     <TabTwo/>
                 </Tab>
+                <Tab
+                    heading={<TabHeading style={this.state.currentTab === 2 ? styles.activeTabStyle : styles.tabStyle}><Icon type="MaterialIcons" name="event" /><Text>Interests</Text></TabHeading>}>
+                    <TabThree/>
+                </Tab>
                 </Tabs>
+
+                <Fab
+                    active={this.state.active}
+                    direction="up"
+                    containerStyle={{}}
+                    style={{ backgroundColor: "#5067FF" }}
+                    position="bottomRight"
+                    onPress={() => this.setState({ active: !this.state.active })}
+                >
+                    <IconNB name="md-share" />
+                </Fab>
+
             </Container>
         );
     }
